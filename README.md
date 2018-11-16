@@ -37,7 +37,7 @@ Notes:
   - and the percentage of enrollment is in the preferred range.
   
 
-## Output files
+## Output files (better open with firefox)
   - `data.json` gives 
   
     ```
@@ -45,6 +45,19 @@ Notes:
     ```
     which is dict -> dict-> list
     
+    ![data.json example](data/data-example)
+  
+  - `data2.json` gives
+  
+    ```
+    course num -> year -> time -> percentage of enrollment
+    ```
+    which is dict -> dict -> dict -> list
+    
+    ![data2.json example](data/data2-example)
+    
+## Command line Outputs
+
   - i.e.
   ```
   Math 124
@@ -63,13 +76,7 @@ Notes:
     2018  51.42857143(✗)               57.14285714(✓)               57.14285714(✓)
   ```
     
-  - `data2.json` gives
-  
-    ```
-    course num -> year -> time -> percentage of enrollment
-    ```
-    which is dict -> dict -> dict -> list
-    
+
   - i.e.
   ```
   Math 124
