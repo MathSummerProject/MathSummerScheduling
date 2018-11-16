@@ -45,7 +45,9 @@ Notes:
     ```
     which is dict -> dict-> list
     
-    ![data.json example](data/data-example)
+    <p align="center">
+      <img src="data/data-example.png" width="350" alt="accessibility text">
+    </p>
   
   - `data2.json` gives
   
@@ -54,7 +56,9 @@ Notes:
     ```
     which is dict -> dict -> dict -> list
     
-    ![data2.json example](data/data2-example)
+    <p align="center">
+      <img src="data/data2-example.png" width="350" alt="accessibility text">
+    </p>
     
 ## Command line Outputs
 
