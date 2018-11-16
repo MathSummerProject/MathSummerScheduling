@@ -3,7 +3,8 @@
 Scheduling non-major summer courses for MATH 381 group project at UW
 
 ## Scripts Info
-Python scripts are mostly for creating tables with two steps:
+- R scripts for diagrams
+- Python scripts are mostly for creating tables with two steps:
   
 ### Read csv data
 - read csv
