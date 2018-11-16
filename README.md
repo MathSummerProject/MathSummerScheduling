@@ -1,4 +1,4 @@
-# Solving UW Math Summer Scheduling Problem
+# [Solving UW Math Summer Scheduling Problem](https://mathsummerproject.github.io/MathSummerScheduling/)
 
 Scheduling non-major summer courses for MATH 381 group project at UW
 
