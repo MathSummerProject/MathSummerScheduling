@@ -45,8 +45,9 @@ Notes:
     ```
     which is dict -> dict-> list
     
+    - i.e.
     <p align="center">
-      <img src="data/data-example.png" width="350" alt="accessibility text">
+      <img src="data/data-example.png" width="250" height="450" alt="accessibility text">
     </p>
   
   - `data2.json` gives
@@ -56,8 +57,9 @@ Notes:
     ```
     which is dict -> dict -> dict -> list
     
+    - i.e.
     <p align="center">
-      <img src="data/data2-example.png" width="350" alt="accessibility text">
+      <img src="data/data2-example.png" width="250" height="450" alt="accessibility text">
     </p>
     
 ## Command line Outputs
