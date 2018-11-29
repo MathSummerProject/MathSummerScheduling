@@ -1,5 +1,6 @@
 library(dplyr)
 library(survival)
+# need to run initial first to get all initial field
 
 initial <- function() {
   t_at <- c(110, 220, 940, 1050, 1200)
@@ -11,18 +12,30 @@ initial <- function() {
   su1 <- read.csv("/Users/linni/Documents/MATH 381/su1.csv", header = TRUE)
   su1 <- data.frame(su1)
   
-  m111 <- su1[su1$Crs.No == 111,]
-  m111 <- m111[m111$Current.Enrlmnt != 0,]
-  summary(m111)
+  # m111 <- su1[su1$Crs.No == 111,]
+  # m111 <- m111[m111$Current.Enrlmnt != 0,]
+  # summary(m111)
   
   t_ex <- expression(paste(1,":",10,"pm"), paste(2,":",20,"pm"), 
                      paste(9,":",40,"am"), paste(10,":",50,"am"),
                      paste(12,":00","am"))
   defa <- rep(0, length(t_at))
+
+  stu<-numeric(11)
+  for (i in yr_at) {
+    stu[i-2007] <- sum(su1[su1$Yr == i,]$Current.Enrlmnt)
+  }
+  plot(yr_at, stu,
+       main=paste("MATH Course Total Enrollment"), 
+       ylim=c(0,max(stu)+10),
+       xlab="Year",ylab="Total Enrollment", pch=20)
 }
 
 graph <- function(course) {
   initial()
+  png(paste(course,".png"))
+  par(mfrow=c(3,3))
+  
   bf <- data.frame("Section" = t_at, "> 0.8 LB" = defa,
                    "> 0.8 UB" = defa, "0.57~0.8 LB"= defa,
                    "0.57~0.8 UB" = defa,
@@ -31,17 +44,23 @@ graph <- function(course) {
   names(bf)<-c("Section","> 0.8 LB","> 0.8 UB",
                "0.57~0.8 LB","0.57~0.8 UB",
                "> 0.57 LB","> 0.57 UB")
-  par(mfrow=c(2,3))
+  
   mc <- su1[su1$Crs.No == course,]
   mc <- mc[mc$Current.Enrlmnt != 0,]
   p<-numeric(11)
+  stu<-numeric(11)
   for (i in 1:11) {
     yr <- mc[mc$Yr == yr_at[i],]
-    p[i] <- nrow(yr)
+    p[i] <- as.integer(nrow(yr))
+    stu[i] <- sum(yr$Current.Enrlmnt)
   }
+  plot(yr_at, stu,
+       main=paste("MATH",course), ylim=c(0,max(stu)+10),
+       xlab="Year",ylab="Total Enrollment", pch=20)
 
   plot(yr_at, p, main=paste("MATH",course),
-       xlab="Year",ylab="Section Number", pch=20)
+       xlab="Year",ylab="Section Number",
+       ylim=c(0,max(p)+1),pch=20)
   
   mc$pch=20
   mc$pch[mc$Yr>=2015]=4
@@ -123,6 +142,7 @@ graph <- function(course) {
     text(0.57, 1000, "0.57", pos = 2)
     text(0.8,1000, "0.80", pos = 4)
   }
+  dev.off()
   return(bf)
 }
 
@@ -175,6 +195,7 @@ solution <- function(course) {
 
 produce <- function() {
   sink("/Users/linni/Documents/MATH 381/output.txt")
+  course = c(111, 120, 124, 125, 126, 307, 308, 309, 324)
   for (i in course) {
     print(i)
     print(solution(i))
@@ -184,3 +205,4 @@ produce <- function() {
 }
 
 produce()
+
