@@ -76,16 +76,31 @@ graph <- function(course) {
     xlab="Start Time",xaxt="n")
     axis(1, at = t_at,labels = t_ex)
     
-    count <- 0
+    
     dev.off()
+    
+    countS <- 0
+    for (i in t_at) {
+        sec <- mc[mc$Start.Time == i,]
+        occur <- nrow(sec)
+        if (occur == 0) {next}
+        countS = countS+1
+    }
+    
     png(paste(course,"section.png"))
-    par(mfrow=c(3,2))
+    if (countS <= 2) {
+        par(mfrow=c(2,1))
+    } else if (countS <= 4) {
+        par(mfrow=c(2,2))
+    } else {
+        par(mfrow=c(3,2))
+    }
+    
     for (i in t_at) {
         
         sec <- mc[mc$Start.Time == i,]
         occur <- nrow(sec)
         if (occur == 0) {next}
-        count = count+1
         total <- 0
         #sec_tot <- 0
         for (a in 1:11) {
