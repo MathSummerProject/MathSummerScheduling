@@ -112,12 +112,14 @@ graph <- function(course) {
         
         mu<-total/(sum(p*weight))
         
+        # Monte Carlo Simulation
         ntrial<-1000
         x<-numeric(ntrial)
         k1 <- 0
         k2 <- 0
         k3 <- 0
         for (j in 1:ntrial){
+            # assume poisson distribution
             d <- rpois(occur, mu)
             x[j] <- mean(d)/40
             if (x[j] >= 0.57) {
@@ -130,6 +132,7 @@ graph <- function(course) {
             }
         }
         
+        # build up poisson ci for different regions
         bf[bf$Section==i,]$"> 0.8 LB" =
         cipoisson(k1,time=1000,p=0.95)[1]
         bf[bf$Section==i,]$"> 0.8 UB" =
@@ -195,6 +198,7 @@ solution <- function(course) {
             now <- now + 1
         }
         
+        # add potential good-performance time slot
         if (now < num) {
             sol[sol$"Section"==220,]$"Nmuber" =
             sol[sol$"Section"==220,]$"Nmuber" + 1
