@@ -1,5 +1,6 @@
 library(dplyr)
 library(survival)
+
 # need to run initial first to get all initial field
 
 initial <- function() {
@@ -21,20 +22,23 @@ initial <- function() {
                      paste(12,":00","am"))
   defa <- rep(0, length(t_at))
 
-  stu<-numeric(11)
-  for (i in yr_at) {
-    stu[i-2007] <- sum(su1[su1$Yr == i,]$Current.Enrlmnt)
-  }
-  plot(yr_at, stu,
-       main=paste("MATH Course Total Enrollment"), 
-       ylim=c(0,max(stu)+10),
-       xlab="Year",ylab="Total Enrollment", pch=20)
+  
 }
 
 graph <- function(course) {
   initial()
+  
   png(paste(course,".png"))
   par(mfrow=c(3,3))
+  
+  tot_s<-numeric(11)
+  for (i in yr_at) {
+    tot_s[i-2007] <- sum(su1[su1$Yr == i,]$Current.Enrlmnt)
+  }
+  plot(yr_at, tot_s,
+       main=paste("MATH Course Total Enrollment"), 
+       ylim=c(0,max(tot_s)+10),
+       xlab="Year",ylab="Total Enrollment", pch=20)
   
   bf <- data.frame("Section" = t_at, "> 0.8 LB" = defa,
                    "> 0.8 UB" = defa, "0.57~0.8 LB"= defa,
