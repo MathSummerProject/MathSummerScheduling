@@ -124,10 +124,26 @@ Notes:
 
 ## Command line Outputs(Stage II)
 
+### Annual Total Enrollment
+<p align="center">
+      <img src="https://github.com/MathSummerProject/MathSummerScheduling/blob/master/Graph/annual_enrol.png"     
+           width="450" height="450" alt="accessibility text">
+</p>
+
+
+
+### Past Data Summary of MATH 324
+<p align="center">
+      <img src="https://github.com/MathSummerProject/MathSummerScheduling/blob/master/Graph/324%20past_summary.png"    
+           width="450" height="450" alt="accessibility text">
+</p>
+
+
 ### Monte Carlo Simulation
-  <p align="center">
-      <img src="https://github.com/MathSummerProject/MathSummerScheduling/blob/master/Graph/324%20predict_hist.png"     width="450" height="450" alt="accessibility text">
-  </p>
+<p align="center">
+      <img src="https://github.com/MathSummerProject/MathSummerScheduling/blob/master/Graph/324%20predict_hist.png"     
+           width="450" height="450" alt="accessibility text">
+</p>
 
 
 ### Priority Queue
