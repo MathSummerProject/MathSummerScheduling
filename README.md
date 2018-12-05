@@ -14,6 +14,9 @@ Scheduling non-major summer courses for MATH 381 group project at UW.
   of students for a open class, we offer appropriate time schedules of sections for 9 non-major
   service courses based on historical data.
   </p>
+  <p>
+    <b>Keywords:</b> Mathematical model;  Monte Carlo Simulation;  Statistical Analysis;  Linear Pro-gramming; Course schedule
+   </p>
 </div>
 
 ## Team members Info
