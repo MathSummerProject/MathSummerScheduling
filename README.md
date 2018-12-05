@@ -126,7 +126,7 @@ Notes:
 
 ### Monte Carlo Simulation
   <p align="center">
-      <img src="https://github.com/MathSummerProject/MathSummerScheduling/blob/master/Graph/324%20predict_hist.png"     width="250" height="450" alt="accessibility text">
+      <img src="https://github.com/MathSummerProject/MathSummerScheduling/blob/master/Graph/324%20predict_hist.png"     width="450" height="450" alt="accessibility text">
   </p>
 
 
