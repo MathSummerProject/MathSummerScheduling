@@ -257,8 +257,7 @@ solution <- function(course) {
 }
 
 produce <- function() {
-  
-  sink("/Users/linni/Documents/MATH 381/output.txt")
+  sink("/Users/linni/Documents/MATH 381/Project/output/output.txt")
   course = c(111, 120, 124, 125, 126, 307, 308, 309, 324)
   for (i in course) {
     print(i)
