@@ -124,6 +124,12 @@ Notes:
 
 ## Command line Outputs(Stage II)
 
+### Monte Carlo Simulation
+  <p align="center">
+      <img src="https://github.com/MathSummerProject/MathSummerScheduling/blob/master/Graph/324%20predict_hist.png"     width="250" height="450" alt="accessibility text">
+  </p>
+
+
 ### Priority Queue
 ```
 [1] 324
