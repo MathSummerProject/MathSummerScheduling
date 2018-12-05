@@ -104,9 +104,10 @@ graph <- function(course) {
   hist(m$Predicted.Enrlmnt,freq=FALSE,
        main="Current Enrollment Distribution",
        xlab="Current Enrollment",
+       xlim=c(0,45),
        ylim=c(0,max(y,z)+0.01))
-  lines(z,col='red')
-  lines(y,col='blue')
+  lines(y,col='red')
+  lines(z,col='blue')
   legend("topleft",legend=c("normal", "poisson"),
          col=c("red", "blue"), lty=1, cex=0.8)
   title(paste("Past Data of MATH", course,"in [2008~2018]"), 
