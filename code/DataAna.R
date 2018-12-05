@@ -97,7 +97,7 @@ graph <- function(course) {
   # axis(1, at = t_at,labels = t_ex)
   m <- su1[su1$Crs.No==course,]
   mCE <- m$Predicted.Enrlmnt
-  x <- seq(0, 40, by = 1)
+  x <- seq(0, 45, by = 1)
   y<-dnorm(x, mean=mean(mCE), sd=sd(mCE))
   z<-dpois(x, lambda=mean(mCE))
   
