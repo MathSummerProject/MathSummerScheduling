@@ -131,20 +131,20 @@ Notes:
 
 ### Annual Total Enrollment
 <p align="center">
-      <img src="https://github.com/MathSummerProject/MathSummerScheduling/blob/master/Graph/annual_enrol.png"     
+      <img src="Graph/annual_enrol.png"     
            width="450" height="450" alt="accessibility text">
 </p>
 
 
 ### Past Data Summary of MATH 308
 <p align="center">
-      <img src="https://github.com/MathSummerProject/MathSummerScheduling/blob/master/Graph/308%20past_summary.png"    
+      <img src="Graph/308%20past_summary.png"    
            width="450" height="450" alt="accessibility text">
 </p>
 
 ### Monte Carlo Simulation
 <p align="center">
-      <img src="https://github.com/MathSummerProject/MathSummerScheduling/blob/master/Graph/308%20predict_hist.png"     
+      <img src="Graph/308%20predict_hist.png"     
            width="450" height="450" alt="accessibility text">
 </p>
 
