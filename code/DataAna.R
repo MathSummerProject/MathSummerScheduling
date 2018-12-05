@@ -255,18 +255,6 @@ solution <- function(course) {
 
 produce <- function() {
   
-  png("total.png")
-  par(mfrow=c(1,1))
-  tot_s<-numeric(11)
-  for (i in yr_at) {
-    tot_s[i-2007] <- sum(su1[su1$Yr == i,]$Current.Enrlmnt)
-  }
-  plot(yr_at, tot_s,
-       main=paste("MATH Course Total Enrollment"), 
-       ylim=c(0,max(tot_s)+10),
-       xlab="Year",ylab="Total Enrollment", pch=20)
-  dev.off()
-  
   sink("/Users/linni/Documents/MATH 381/output.txt")
   course = c(111, 120, 124, 125, 126, 307, 308, 309, 324)
   for (i in course) {
