@@ -1,6 +1,6 @@
 library(dplyr)
 library(survival)
-
+setwd("/Users/linni/Documents/MATH 381/Project/Graph")
 # need to run initial first to get all initial field
 
 initial <- function() {
@@ -121,6 +121,9 @@ graph <- function(course) {
        ylab="Enrollment Percentage",xaxt="n",
        ylim=c(0,1), pch=mc$pch, col=mc$Color)
   axis(1, at = t_at,labels = t_ex, cex.axis=0.8)
+  legend("bottomleft",
+         legend=c("cancel", "satisfied LB", "satisfied UB"),
+         col=c("green", "blue", "red"), lty=1, cex=0.75)
   
   # axis(1, at = t_at,labels = t_ex, cex.axis=0.8)
   abline(h=0.29,col='green')
