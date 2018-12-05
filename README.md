@@ -1,6 +1,20 @@
 # [Solving UW Math Summer Scheduling Problem](https://mathsummerproject.github.io/MathSummerScheduling/)
 
-Scheduling non-major summer courses for MATH 381 group project at UW
+Scheduling non-major summer courses for MATH 381 group project at UW.
+
+<div>
+  <p><b>Abstract</b></p>
+  <p>
+  Based on our interview with Sarah Garner, director of the Math Department’s Advising
+  office, we will address the decision problem of finding an appropriate number of sections of
+  each course in the 100 to 300 level category. The threshold for opening a section, having at
+  least 10 out of 35 student enrollments. In this paper, we first present the problem description
+  and its impacts. Then, we model the problem and solve it with the linear programming,
+  simulation and statistical analysis. Finally, with limited resources, such as required number
+  of students for a open class, we offer appropriate time schedules of sections for 9 non-major
+  service courses based on historical data.
+  </p>
+</div>
 
 ## Team members Info
 - Yanmeng (Anny) Kong [@Annykong](https://github.com/AnnyKong)
