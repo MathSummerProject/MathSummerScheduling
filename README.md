@@ -21,7 +21,7 @@ Scheduling non-major summer courses for MATH 381 group project at UW.
 
 ## Team members Info
 - Yanmeng (Anny) Kong [@Annykong](https://github.com/AnnyKong)
-- Lini Cai [@cai20170929](https://github.com/cai20170929)
+- Linni Cai [@cai20170929](https://github.com/cai20170929)
 
 ## Scripts Info
 - R scripts for diagrams
