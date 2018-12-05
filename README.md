@@ -24,14 +24,14 @@ Scheduling non-major summer courses for MATH 381 group project at UW.
 - Linni Cai [@cai20170929](https://github.com/cai20170929)
 
 ## Scripts Info
-- R scripts for diagrams
-- Python scripts are mostly for creating tables with two steps:
+- Stage I: Python scripts for Linear Programming, reading data, and tables.
+- Stage II: R scripts for Monte Carlo Simulation, diagrams and priority queue.
   
-### Read csv data
+### Read csv data - Stage I
 - read csv
 - generate a dictionary for storing all necessary data
 
-### Generate customized table
+### Generate customized table - Stage I
 An example of Math 120 table would look like the following:
 ```
 Math 120
@@ -58,7 +58,7 @@ Notes:
   - and the percentage of enrollment is in the preferred range.
   
 
-## Output files (better open with firefox)
+## Output files - Stage I (better open with firefox)
   - `data.json` gives 
   
     ```
@@ -83,7 +83,7 @@ Notes:
       <img src="data/data2-example.png" width="250" height="450" alt="accessibility text">
     </p>
     
-## Command line Outputs (Stage I)
+## Command line Outputs - Stage I
 
   - i.e.
   ```
@@ -121,8 +121,13 @@ Notes:
   2017  45.71(110✗)                  82.86(1050✗)                 85.71(940✗)
   2018  51.43(1200✗)                 57.14(940✓)                  57.14(1050✓)
   ```
+  
+## Final Result - Stage I
+  <p align="center">
+    <img src="data/result-stageI.png" alt="accessibility text">
+  </p>
 
-## Command line Outputs (Stage II)
+## Command line Outputs - Stage II
 
 ### Annual Total Enrollment
 <p align="center">
@@ -144,7 +149,7 @@ Notes:
 </p>
 
 
-### Priority Queue
+### Priority Queue - Stage II (example)
 ```
 [1] 308
 [1] "performance:"
@@ -160,7 +165,7 @@ Notes:
 3  1.045392
 ```
 
-### Final Result
+### Final Result - stage II (example)
   ```
   Section Number
 1     110      0
@@ -169,3 +174,4 @@ Notes:
 4    1050      1
 5    1200      2
   ```
+Details can be referred from the paper.
