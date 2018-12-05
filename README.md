@@ -131,40 +131,41 @@ Notes:
 </p>
 
 
-### Past Data Summary of MATH 324
+### Past Data Summary of MATH 308
 <p align="center">
-      <img src="https://github.com/MathSummerProject/MathSummerScheduling/blob/master/Graph/324%20past_summary.png"    
+      <img src="https://github.com/MathSummerProject/MathSummerScheduling/blob/master/Graph/308%20past_summary.png"    
            width="450" height="450" alt="accessibility text">
 </p>
 
 ### Monte Carlo Simulation
 <p align="center">
-      <img src="https://github.com/MathSummerProject/MathSummerScheduling/blob/master/Graph/324%20predict_hist.png"     
+      <img src="https://github.com/MathSummerProject/MathSummerScheduling/blob/master/Graph/308%20predict_hist.png"     
            width="450" height="450" alt="accessibility text">
 </p>
 
 
 ### Priority Queue
 ```
-[1] 324
+[1] 308
 [1] "performance:"
-  Section   > 0.8 LB   > 0.8 UB 0.57~0.8 LB 0.57~0.8 UB > 0.57 LB
-5    1200 0.14633003 0.19863835   0.7735211   0.8874071  0.938973
-3     940 0.02024087 0.04282687   0.9099099   1.0330158  0.938973
-1     110 0.01537725 0.03571010   0.9157214   1.0392042  0.938973
+  Section  > 0.8 LB    > 0.8 UB 0.57~0.8 LB 0.57~0.8 UB > 0.57 LB
+5    1200 0.9312215 1.055703822 0.003453832  0.01576319 0.9389730
+2     220 0.7793172 0.893610867 0.140783917  0.19218578 0.9389730
+4    1050 0.0000000 0.003688879 0.938973018  1.06395214 0.9389730
+3     940 0.0000000 0.003688879 0.921533415  1.04539202 0.9215334
   > 0.57 UB
 5  1.063952
-3  1.063952
-1  1.063952
-
+2  1.063952
+4  1.063952
+3  1.045392
 ```
 
 ### Final Result
   ```
   Section Number
-1     110      1
-2     220      1
+1     110      0
+2     220      2
 3     940      1
-4    1050      0
-5    1200      1
+4    1050      1
+5    1200      2
   ```
