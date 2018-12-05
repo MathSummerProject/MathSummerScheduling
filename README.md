@@ -83,7 +83,7 @@ Notes:
       <img src="data/data2-example.png" width="250" height="450" alt="accessibility text">
     </p>
     
-## Command line Outputs
+## Command line Outputs (Stage I)
 
   - i.e.
   ```
