@@ -122,7 +122,7 @@ Notes:
   2018  51.43(1200✗)                 57.14(940✓)                  57.14(1050✓)
   ```
 
-## Command line Outputs(Stage II)
+## Command line Outputs (Stage II)
 
 ### Annual Total Enrollment
 <p align="center">
@@ -131,13 +131,11 @@ Notes:
 </p>
 
 
-
 ### Past Data Summary of MATH 324
 <p align="center">
       <img src="https://github.com/MathSummerProject/MathSummerScheduling/blob/master/Graph/324%20past_summary.png"    
            width="450" height="450" alt="accessibility text">
 </p>
-
 
 ### Monte Carlo Simulation
 <p align="center">
