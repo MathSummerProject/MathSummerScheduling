@@ -1,8 +1,11 @@
 # need to run initial first to get all initial field
 library(dplyr)
 library(survival)
-setwd("/Users/linni/Documents/MATH 381/MathSummerScheduling/Graph")
-yrN=8 # 11 represents past data of 2008-2018, predicts 2019
+
+setwd(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/Graph/",yr_at[yrN],sep=""))
+#setwd("/Users/linni/Documents/MATH 381/MathSummerScheduling/Graph/2019")
+#yrN=9 # 11 represents past data of 2008-2018, predicts 2019
+yrN=8
 t_at <- c(110, 220, 940, 1050, 1200)
 yr_at <- 2007+1:yrN
 course = c(111, 120, 124, 125, 126, 307, 308, 309, 324)
