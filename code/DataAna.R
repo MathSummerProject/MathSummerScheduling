@@ -1,13 +1,26 @@
+# need to run initial first to get all initial field
 library(dplyr)
 library(survival)
 setwd("/Users/linni/Documents/MATH 381/MathSummerScheduling/Graph")
-# need to run initial first to get all initial field
+yrN=8 # 11 represents past data of 2008-2018, predicts 2019
+t_at <- c(110, 220, 940, 1050, 1200)
+yr_at <- 2007+1:yrN
+course = c(111, 120, 124, 125, 126, 307, 308, 309, 324)
+weight <- c(seq(0.1,0.6,0.1), seq(0.8, 1.6, 0.2))[1:yrN]
+weight <- weight / sum(weight)
+t_ex <- expression(paste(1,":",10,"pm"), paste(2,":",20,"pm"), 
+                   paste(9,":",40,"am"), paste(10,":",50,"am"),
+                   paste(12,":00","am"))
+defa <- rep(0, length(t_at))
 
-initial <- function() {
+su1 <- read.csv("/Users/linni/Documents/MATH 381/MathSummerScheduling/data/su1.csv", header = TRUE)
+su1 <- data.frame(su1)[su1$Yr<=yr_at[yrN],]
+initial(yrN)
+initial <- function(yrN) {
   t_at <- c(110, 220, 940, 1050, 1200)
-  yr_at <- 2008:2018
+  yr_at <- 2007+1:yrN
   course = c(111, 120, 124, 125, 126, 307, 308, 309, 324)
-  weight <- c(seq(0.1,0.6,0.1), seq(0.8, 1.6, 0.2))
+  weight <- c(seq(0.1,0.6,0.1), seq(0.8, 1.6, 0.2))[1:yrN]
   weight <- weight / sum(weight)
   t_ex <- expression(paste(1,":",10,"pm"), paste(2,":",20,"pm"), 
                      paste(9,":",40,"am"), paste(10,":",50,"am"),
@@ -15,29 +28,23 @@ initial <- function() {
   defa <- rep(0, length(t_at))
   
   su1 <- read.csv("/Users/linni/Documents/MATH 381/MathSummerScheduling/data/su1.csv", header = TRUE)
-  su1 <- data.frame(su1)
-  
-  # m111 <- su1[su1$Crs.No == 111,]
-  # m111 <- m111[m111$Current.Enrlmnt != 0,]
-  # summary(m111)
-  
+  su1 <- data.frame(su1)[su1$Yr<=yr_at[yrN],]
+
   png(paste("annual_enrol.png"))
   par(mfrow=c(1,1))
-  total <- numeric(11)
-  for (i in 1:11) {
+  total <- numeric(yrN)
+  for (i in 1:yrN) {
     yr <- yr_at[i]
     total[i] <- sum(su1[su1$Yr == yr,]$Current.Enrlmnt)
   }
   plot(yr_at, total,
-       main=paste("MATH Course Annual Total Enrollment"), 
+       main=paste("MATH Course Annual Total Enrollment in [ 2008 ~", yr_at[yrN], "]"), 
        ylim=c(0,max(total)+10), pch=20,
        xlab="Year",ylab="Total Enrollment")
   dev.off()
-  
 }
 
 graph <- function(course) {
-  initial()
   
   png(paste(course,"past_summary.png",sep="_"))
   par(mfrow=c(2,2),oma=c(0,0,2,0))
@@ -53,9 +60,9 @@ graph <- function(course) {
   
   mc <- su1[su1$Crs.No == course,]
   mc <- mc[mc$Current.Enrlmnt != 0,]
-  p<-numeric(11)
-  stu<-numeric(11)
-  for (i in 1:11) {
+  p<-numeric(yrN)
+  stu<-numeric(yrN)
+  for (i in 1:yrN) {
     yr <- mc[mc$Yr == yr_at[i],]
     p[i] <- as.integer(nrow(yr))
     stu[i] <- sum(yr$Current.Enrlmnt)
@@ -71,14 +78,14 @@ graph <- function(course) {
        ylim=c(0,max(p)+1),pch=20)
   
   mc$pch=20
-  mc$pch[mc$Yr>=2015]=4
+  mc$pch[mc$Yr>=(yr_at[yrN]-3)]=4
   mc$Color="black"
-  mc$Color[mc$Yr>=2015]="red"
+  mc$Color[mc$Yr>=yr_at[yrN]-3]="red"
   
   #text(400, 0.29, "0.29", pos = 4)
   #text(400, 0.57, "0.57", pos = 4)
   #text(400, 0.8, "0.80", pos = 4)
-  occur<-numeric(11)
+  occur<-numeric(yrN)
   countS <- 0
   for (i in t_at) {
     sec <- mc[mc$Start.Time == i,]
@@ -110,14 +117,14 @@ graph <- function(course) {
   lines(z,col='blue')
   legend("topleft",legend=c("normal", "poisson"),
          col=c("red", "blue"), lty=1, cex=0.8)
-  title(paste("Past Data of MATH", course,"in [2008~2018]"), 
+  title(paste("Past Data of MATH", course,"in [ 2008 ~", yr_at[yrN], "]"), 
         outer=TRUE)
   dev.off() 
   
   png(paste(course,"pe_section.png",sep="_"))
   plot(mc$Start.Time,mc$Enrlmnt.Percentage,
        main=paste("MATH", course,
-                  "Enrollment Percentages of Sections in [2008~2018]"),
+                  "Enrollment Percentages of Sections in [ 2008 ~", yr_at[yrN], "]"),
        xlab="Start Time", 
        ylab="Enrollment Percentage",xaxt="n",
        ylim=c(0,1), pch=mc$pch, col=mc$Color)
@@ -148,7 +155,7 @@ graph <- function(course) {
     if (occur == 0) {next}
     total <- 0
     #sec_tot <- 0
-    for (a in 1:11) {
+    for (a in 1:yrN) {
       sec_e <- sec[sec$Yr == yr_at[a],]
       e_yr <- sec_e$Enrlmnt.Percentage*40
       if (length(e_yr)==0) {e_yr = 0}
@@ -204,7 +211,7 @@ graph <- function(course) {
   legend("topleft",
          legend=c("cancel", "satisfied LB", "satisfied UB"),
          col=c("green", "blue", "red"), lty=1, cex=0.5)
-  title(paste("Prediction of MATH", course,"in 2019"), 
+  title(paste("Prediction of MATH", course,"in", yr_at[yrN]+1), 
         outer=TRUE)
   dev.off()
   return(bf)
@@ -231,8 +238,9 @@ priority <- function(course) {
 
 solution <- function(course) {
   
-  crsN <- read.csv("/Users/linni/Documents/MATH 381/MathSummerScheduling/data/crsN.csv", header = TRUE)
+  crsN <- read.csv("/Users/linni/Documents/MATH 381/MathSummerScheduling/data/crsN2.csv", header = TRUE)
   crsN <- data.frame(crsN)
+  
   num <- crsN[crsN$Course==course,]$Number
   q <- priority(course)
   sol <- data.frame("Section" = t_at, "Number" = defa)
@@ -257,8 +265,33 @@ solution <- function(course) {
   return(sol)
 }
 
+validate <- function() {
+  if (yrN < 11) {
+    sink(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/output/real",yr_at[yrN]+1,".txt"))
+    #su1 <- read.csv("/Users/linni/Documents/MATH 381/MathSummerScheduling/data/su1.csv", header = TRUE)
+    for (i in course) {
+      crs <- su1[su1$Crs.No==i,]
+      crs <- crs[crs$Yr==2018,]
+      num <- crsN[crsN$Course==course,]$Number
+      sol <- data.frame("Section" = t_at, "Number" = defa)
+      print(i)  
+      count = numeric(5)
+      defa <- rep(0, length(t_at))
+      for (j in 1:5) {
+        a<-crs[crs$Start.Time==t_at[j]] 
+        if (length(a) != 0) {
+          sol[sol$"Section"==t_at[j],]$"Number"=sol[sol$"Section"==t_at[j],]$"Number"+1
+        }
+      }
+      print(sol)
+      cat("\n")
+    }
+    sink()
+  }
+}
+
 produce <- function() {
-  sink("/Users/linni/Documents/MATH 381/MathSummerScheduling/output/output.txt")
+  sink(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/output/output", yr_at[yrN]+1, ".txt"))
   course = c(111, 120, 124, 125, 126, 307, 308, 309, 324)
   for (i in course) {
     print(i)
@@ -266,6 +299,8 @@ produce <- function() {
     cat('\n\n')
   }
   sink()
+  validate()
 }
 
 produce()
+
