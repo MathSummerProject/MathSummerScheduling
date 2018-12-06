@@ -131,7 +131,7 @@ Notes:
 
 ### Annual Total Enrollment
 <p align="center">
-      <img src="Graph/annual_enrol.png"     
+      <img src="Graph/2019/annual_enrol.png"     
            width="450" height="450" alt="accessibility text">
 </p>
 
