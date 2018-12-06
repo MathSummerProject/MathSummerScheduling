@@ -145,7 +145,7 @@ Notes:
 ### Monte Carlo Simulation
 <p align="center">
       <img src="Graph/2019/324_predict_hist.png"     
-           width="450" height="450" alt="accessibility text">
+           width="600" height="600" alt="accessibility text">
 </p>
 
 
