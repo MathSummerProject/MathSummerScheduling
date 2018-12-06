@@ -270,7 +270,7 @@ solution <- function(course) {
 
 validate <- function() {
   if (yrN < 11) {
-    sink(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/output/real",yr_at[yrN]+1,".txt"))
+    sink(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/output/StageII_real",yr_at[yrN]+1,".txt"))
     #su1 <- read.csv("/Users/linni/Documents/MATH 381/MathSummerScheduling/data/su1.csv", header = TRUE)
     for (i in course) {
       crs <- su1[su1$Crs.No==i,]
@@ -294,7 +294,7 @@ validate <- function() {
 }
 
 produce <- function() {
-  sink(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/output/output", yr_at[yrN]+1, ".txt"))
+  sink(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/output/StageII_output", yr_at[yrN]+1, ".txt"))
   course = c(111, 120, 124, 125, 126, 307, 308, 309, 324)
   for (i in course) {
     print(i)
