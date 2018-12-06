@@ -138,13 +138,13 @@ Notes:
 
 ### Past Data Summary of MATH 308
 <p align="center">
-      <img src="Graph/308_past_summary.png"    
+      <img src="Graph/308%20past_summary.png"    
            width="450" height="450" alt="accessibility text">
 </p>
 
 ### Monte Carlo Simulation
 <p align="center">
-      <img src="Graph/308_predict_hist.png"     
+      <img src="Graph/308%20predict_hist.png"     
            width="450" height="450" alt="accessibility text">
 </p>
 
