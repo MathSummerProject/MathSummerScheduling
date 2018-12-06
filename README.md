@@ -132,20 +132,20 @@ Notes:
 ### Annual Total Enrollment
 <p align="center">
       <img src="Graph/2019/annual_enrol.png"     
-           width="450" height="450" alt="accessibility text">
+           width="800" height="800" alt="accessibility text">
 </p>
 
 
 ### Past Data Summary of MATH 324
 <p align="center">
       <img src="Graph/2019/324_past_summary.png"    
-           width="450" height="450" alt="accessibility text">
+           width="800" height="800" alt="accessibility text">
 </p>
 
 ### Monte Carlo Simulation
 <p align="center">
       <img src="Graph/2019/324_predict_hist.png"     
-           width="600" height="600" alt="accessibility text">
+           width="800" height="800" alt="accessibility text">
 </p>
 
 
