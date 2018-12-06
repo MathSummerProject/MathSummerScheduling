@@ -136,37 +136,36 @@ Notes:
 </p>
 
 
-### Past Data Summary of MATH 308
+### Past Data Summary of MATH 324
 <p align="center">
-      <img src="Graph/308_past_summary.png"    
+      <img src="Graph/2019/324_past_summary.png"    
            width="450" height="450" alt="accessibility text">
 </p>
 
 ### Monte Carlo Simulation
 <p align="center">
-      <img src="Graph/308_predict_hist.png"     
+      <img src="Graph/2019/324_predict_hist.png"     
            width="450" height="450" alt="accessibility text">
 </p>
 
 
 ### Priority Queue - Stage II (example)
 ```
-[1] 308
-[1] "performance:"
-  Section  > 0.8 LB    > 0.8 UB 0.57~0.8 LB 0.57~0.8 UB > 0.57 LB > 0.57 UB
-5    1200 0.9331593 1.057765994 0.002201894  0.01305947 0.9389730  1.063952
-2     220 0.7715892 0.885339038 0.148180516  0.20078744 0.9389730  1.063952
-4    1050 0.0000000 0.003688879 0.938973018  1.06395214 0.9389730  1.063952
-3     940 0.0000000 0.003688879 0.928314878  1.05261045 0.9283149  1.052610
+[1] 324
+[1] "Priority Queue:"
+  Section   > 0.8 LB   > 0.8 UB 0.57~0.8 LB 0.57~0.8 UB > 0.57 LB > 0.57 UB
+5    1200 0.16208565 0.21687935   0.7571027   0.8698258  0.938973  1.063952
+3     940 0.01779317 0.03928358   0.9118470   1.0350786  0.938004  1.062921
+1     110 0.01698406 0.03809602   0.9137841   1.0371414  0.938973  1.063952
 ```
 
 ### Final Result - stage II (example)
   ```
   Section Number
-1     110      0
-2     220      2
+1     110      1
+2     220      1
 3     940      1
-4    1050      1
-5    1200      2
+4    1050      0
+5    1200      1
   ```
 Details can be referred from the paper.
