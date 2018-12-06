@@ -2,10 +2,13 @@
 library(dplyr)
 library(survival)
 
-setwd(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/Graph/",yr_at[yrN],sep=""))
+setwd(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/Graph/",yr_at[yrN]+1,sep=""))
 #setwd("/Users/linni/Documents/MATH 381/MathSummerScheduling/Graph/2019")
-#yrN=9 # 11 represents past data of 2008-2018, predicts 2019
-yrN=8
+#11 represents past data of 2008-2018, predicts 2019
+yrN=11
+#yrN=10
+#yrN=9
+#yrN=8
 t_at <- c(110, 220, 940, 1050, 1200)
 yr_at <- 2007+1:yrN
 course = c(111, 120, 124, 125, 126, 307, 308, 309, 324)
@@ -270,7 +273,7 @@ solution <- function(course) {
 
 validate <- function() {
   if (yrN < 11) {
-    sink(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/output/StageII_real",yr_at[yrN]+1,".txt"))
+    sink(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/output/Stage_II_real",yr_at[yrN]+1,".txt"))
     #su1 <- read.csv("/Users/linni/Documents/MATH 381/MathSummerScheduling/data/su1.csv", header = TRUE)
     for (i in course) {
       crs <- su1[su1$Crs.No==i,]
@@ -294,7 +297,7 @@ validate <- function() {
 }
 
 produce <- function() {
-  sink(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/output/StageII_output", yr_at[yrN]+1, ".txt"))
+  sink(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/output/Stage_II_output", yr_at[yrN]+1, ".txt"))
   course = c(111, 120, 124, 125, 126, 307, 308, 309, 324)
   for (i in course) {
     print(i)
