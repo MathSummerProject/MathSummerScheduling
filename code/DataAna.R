@@ -39,7 +39,7 @@ initial <- function() {
 graph <- function(course) {
   initial()
   
-  png(paste(course,"past_summary.png"))
+  png(paste(course,"past_summary.png",sep="_"))
   par(mfrow=c(2,2),oma=c(0,0,2,0))
   
   bf <- data.frame("Section" = t_at, "> 0.8 LB" = defa,
@@ -114,7 +114,7 @@ graph <- function(course) {
         outer=TRUE)
   dev.off() 
   
-  png(paste(course,"pe_section.png"))
+  png(paste(course,"pe_section.png",sep="_"))
   plot(mc$Start.Time,mc$Enrlmnt.Percentage,
        main=paste("MATH", course,
                   "Enrollment Percentages of Sections in [2008~2018]"),
@@ -132,7 +132,7 @@ graph <- function(course) {
   abline(h=0.80,col='red')
   dev.off() 
   
-  png(paste(course,"predict_hist.png"))
+  png(paste(course,"predict_hist.png",sep="_"))
   if (countS <= 2) {
     par(mfrow=c(2,1),oma=c(0,0,2,0))
   } else if (countS <= 4) {
@@ -224,7 +224,7 @@ priority <- function(course) {
       bf<-bf[-num,]
     }
   }
-  print("performance:")
+  print("Priority Queue:")
   print(bf)
   return(bf)
 }
