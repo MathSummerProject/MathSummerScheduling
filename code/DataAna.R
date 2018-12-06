@@ -1,6 +1,6 @@
 library(dplyr)
 library(survival)
-setwd("/Users/linni/Documents/MATH 381/Project/Graph")
+setwd("/Users/linni/Documents/MATH 381/MathSummerScheduling/Graph")
 # need to run initial first to get all initial field
 
 initial <- function() {
@@ -14,7 +14,7 @@ initial <- function() {
                      paste(12,":00","am"))
   defa <- rep(0, length(t_at))
   
-  su1 <- read.csv("/Users/linni/Documents/MATH 381/su1.csv", header = TRUE)
+  su1 <- read.csv("/Users/linni/Documents/MATH 381/MathSummerScheduling/data/su1.csv", header = TRUE)
   su1 <- data.frame(su1)
   
   # m111 <- su1[su1$Crs.No == 111,]
@@ -39,7 +39,7 @@ initial <- function() {
 graph <- function(course) {
   initial()
   
-  png(paste(course,"past_summary.png"))
+  png(paste(course,"past_summary.png",sep="_"))
   par(mfrow=c(2,2),oma=c(0,0,2,0))
   
   bf <- data.frame("Section" = t_at, "> 0.8 LB" = defa,
@@ -96,12 +96,12 @@ graph <- function(course) {
   #      xlab="Start Time",xaxt="n")
   # axis(1, at = t_at,labels = t_ex)
   m <- su1[su1$Crs.No==course,]
-  mCE <- m$Predicted.Enrlmnt
+  mCE <- m$Enrlmnt.Percentage*40
   x <- seq(0, 45, by = 1)
   y<-dnorm(x, mean=mean(mCE), sd=sd(mCE))
   z<-dpois(x, lambda=mean(mCE))
   
-  hist(m$Predicted.Enrlmnt,freq=FALSE,
+  hist(m$Enrlmnt.Percentage*40,freq=FALSE,
        main="Current Enrollment Distribution",
        xlab="Current Enrollment",
        xlim=c(0,45),
@@ -114,7 +114,7 @@ graph <- function(course) {
         outer=TRUE)
   dev.off() 
   
-  png(paste(course,"pe_section.png"))
+  png(paste(course,"pe_section.png",sep="_"))
   plot(mc$Start.Time,mc$Enrlmnt.Percentage,
        main=paste("MATH", course,
                   "Enrollment Percentages of Sections in [2008~2018]"),
@@ -132,7 +132,7 @@ graph <- function(course) {
   abline(h=0.80,col='red')
   dev.off() 
   
-  png(paste(course,"predict_hist.png"))
+  png(paste(course,"predict_hist.png",sep="_"))
   if (countS <= 2) {
     par(mfrow=c(2,1),oma=c(0,0,2,0))
   } else if (countS <= 4) {
@@ -150,7 +150,7 @@ graph <- function(course) {
     #sec_tot <- 0
     for (a in 1:11) {
       sec_e <- sec[sec$Yr == yr_at[a],]
-      e_yr <- sec_e$Predicted.Enrlmnt
+      e_yr <- sec_e$Enrlmnt.Percentage*40
       if (length(e_yr)==0) {e_yr = 0}
       total = total + e_yr * p[a] * weight[a]
     }
@@ -224,14 +224,14 @@ priority <- function(course) {
       bf<-bf[-num,]
     }
   }
-  print("performance:")
+  print("Priority Queue:")
   print(bf)
   return(bf)
 }
 
 solution <- function(course) {
   
-  crsN <- read.csv("/Users/linni/Documents/MATH 381/crsN.csv", header = TRUE)
+  crsN <- read.csv("/Users/linni/Documents/MATH 381/MathSummerScheduling/data/crsN.csv", header = TRUE)
   crsN <- data.frame(crsN)
   num <- crsN[crsN$Course==course,]$Number
   q <- priority(course)
@@ -258,7 +258,7 @@ solution <- function(course) {
 }
 
 produce <- function() {
-  sink("/Users/linni/Documents/MATH 381/Project/output/output.txt")
+  sink("/Users/linni/Documents/MATH 381/MathSummerScheduling/output/output.txt")
   course = c(111, 120, 124, 125, 126, 307, 308, 309, 324)
   for (i in course) {
     print(i)
