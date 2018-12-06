@@ -2,13 +2,14 @@
 library(dplyr)
 library(survival)
 
-setwd(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/Graph/",yr_at[yrN]+1,sep=""))
-#setwd("/Users/linni/Documents/MATH 381/MathSummerScheduling/Graph/2019")
 #11 represents past data of 2008-2018, predicts 2019
 yrN=11
+#yrN=11
 #yrN=10
 #yrN=9
 #yrN=8
+#setwd("/Users/linni/Documents/MATH 381/MathSummerScheduling/Graph/2019")
+setwd(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/Graph/",yr_at[yrN]+1,sep=""))
 t_at <- c(110, 220, 940, 1050, 1200)
 yr_at <- 2007+1:yrN
 course = c(111, 120, 124, 125, 126, 307, 308, 309, 324)
