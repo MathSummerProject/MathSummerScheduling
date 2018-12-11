@@ -21,8 +21,8 @@ t_ex <- expression(paste(1,":",10,"pm"), paste(2,":",20,"pm"),
                    paste(12,":00","am"))
 defa <- rep(0, length(t_at))
 
-su1 <- read.csv("/Users/linni/Documents/MATH 381/MathSummerScheduling/data/su1.csv", header = TRUE)
-su1 <- data.frame(su1)[su1$Yr<=yr_at[yrN],]
+su <- read.csv("/Users/linni/Documents/MATH 381/MathSummerScheduling/data/su1.csv", header = TRUE)
+su1 <- data.frame(su)[su1$Yr<=yr_at[yrN],]
 initial(yrN)
 initial <- function(yrN) {
   t_at <- c(110, 220, 940, 1050, 1200)
@@ -246,7 +246,9 @@ priority <- function(course) {
 
 solution <- function(course) {
   
-  crsN <- read.csv("/Users/linni/Documents/MATH 381/MathSummerScheduling/data/crsN2.csv", header = TRUE)
+  crsN <- read.csv(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/output/Stage_I_output",
+                         predict_yr,".csv", 
+                         sep="_"),header = TRUE)
   crsN <- data.frame(crsN)
   
   num <- crsN[crsN$Course==course,]$Number
@@ -275,10 +277,10 @@ solution <- function(course) {
 
 validate <- function() {
   if (predict_yr < 2019) {
-    sink(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/output/Stage_II_real",yr_at[yrN]+1,".txt"))
+    sink(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/output/Stage_II_real",yr_at[yrN]+1,".txt",sep="_"))
     #su1 <- read.csv("/Users/linni/Documents/MATH 381/MathSummerScheduling/data/su1.csv", header = TRUE)
     for (i in course) {
-      crs <- su1[su1$Crs.No==i,]
+      crs <- su[su$Crs.No==i,]
       crs <- crs[crs$Yr==predict_yr,]
       num <- crsN[crsN$Course==course,]$Number
       sol <- data.frame("Section" = t_at, "Number" = defa)
