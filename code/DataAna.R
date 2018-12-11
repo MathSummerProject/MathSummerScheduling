@@ -3,7 +3,8 @@ library(dplyr)
 library(survival)
 
 #11 represents past data of 2008-2018, predicts 2019
-yrN=11
+predict_yr = 2018
+yrN = predict_yr-2008
 #yrN=11
 #yrN=10
 #yrN=9
@@ -273,12 +274,12 @@ solution <- function(course) {
 }
 
 validate <- function() {
-  if (yrN < 11) {
+  if (predict_yr < 2019) {
     sink(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/output/Stage_II_real",yr_at[yrN]+1,".txt"))
     #su1 <- read.csv("/Users/linni/Documents/MATH 381/MathSummerScheduling/data/su1.csv", header = TRUE)
     for (i in course) {
       crs <- su1[su1$Crs.No==i,]
-      crs <- crs[crs$Yr==2018,]
+      crs <- crs[crs$Yr==predict_yr,]
       num <- crsN[crsN$Course==course,]$Number
       sol <- data.frame("Section" = t_at, "Number" = defa)
       print(i)  
