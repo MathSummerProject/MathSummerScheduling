@@ -3,7 +3,7 @@ library(dplyr)
 library(survival)
 
 #11 represents past data of 2008-2018, predicts 2019
-predict_yr = 2018
+predict_yr = 2014
 yrN = predict_yr-2008
 #yrN=11
 #yrN=10
