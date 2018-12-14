@@ -1,16 +1,15 @@
 library(dplyr)
 library(survival)
 
-# predict years
+# predict years from 2014 to 2019
 for (i in 2014:2019) { 
+  # set predict year
   predict_yr = i
-
   yrN = predict_yr-2008
   
   # initialize all fields
   t_at <- c(110, 220, 940, 1050, 1200)
   yr_at <- 2007+1:yrN
-  setwd(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/Graph/",yr_at[yrN]+1,sep=""))
   course = c(111, 120, 124, 125, 126, 307, 308, 309, 324)
   weight <- c(seq(0.1,0.6,0.1), seq(0.8, 1.6, 0.2))[1:yrN]
   weight <- weight / sum(weight)
@@ -19,27 +18,22 @@ for (i in 2014:2019) {
                      paste(12,":00","am"))
   defa <- rep(0, length(t_at))
   
+  # set graph output working directory
+  setwd(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/Graph/",yr_at[yrN]+1,sep=""))
+  
+  # input data
   su <- read.csv("/Users/linni/Documents/MATH 381/MathSummerScheduling/data/su1.csv", header = TRUE)
+  # only use data before predicted year 
   su1 <- data.frame(su)[su$Yr<=yr_at[yrN],]
   crsN <- read.csv(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/output/Stage_I_output",
                          predict_yr,".csv", 
                          sep="_"),header = TRUE)
   crsN <- data.frame(crsN)
-  initial(yrN)
-  initial <- function(yrN) {
-    t_at <- c(110, 220, 940, 1050, 1200)
-    yr_at <- 2007+1:yrN
-    course = c(111, 120, 124, 125, 126, 307, 308, 309, 324)
-    weight <- c(seq(0.1,0.6,0.1), seq(0.8, 1.6, 0.2))[1:yrN]
-    weight <- weight / sum(weight)
-    t_ex <- expression(paste(1,":",10,"pm"), paste(2,":",20,"pm"), 
-                       paste(9,":",40,"am"), paste(10,":",50,"am"),
-                       paste(12,":00","am"))
-    defa <- rep(0, length(t_at))
-    
-    su1 <- read.csv("/Users/linni/Documents/MATH 381/MathSummerScheduling/data/su1.csv", header = TRUE)
-    su1 <- data.frame(su1)[su1$Yr<=yr_at[yrN],]
   
+  initial(yrN)
+  
+  # gives a brief summary of enrollment of all years before predicted year
+  initial <- function(yrN) {
     png(paste("annual_enrol.png"))
     par(mfrow=c(1,1))
     total <- numeric(yrN)
@@ -54,8 +48,8 @@ for (i in 2014:2019) {
     dev.off()
   }
   
+  # draws graphs for prediction and past data
   graph <- function(course) {
-    
     png(paste(course,"past_summary.png",sep="_"))
     par(mfrow=c(2,2),oma=c(0,0,2,0))
     
@@ -92,9 +86,6 @@ for (i in 2014:2019) {
     mc$Color="black"
     mc$Color[mc$Yr>=yr_at[yrN]-3]="red"
     
-    #text(400, 0.29, "0.29", pos = 4)
-    #text(400, 0.57, "0.57", pos = 4)
-    #text(400, 0.8, "0.80", pos = 4)
     occur<-numeric(yrN)
     countS <- 0
     for (i in t_at) {
@@ -109,9 +100,6 @@ for (i in 2014:2019) {
             xlab="Start Time",
             ylab="Number of Sections") 
     
-    # hist(mc$Start.Time, main=paste("MATH",course), 
-    #      xlab="Start Time",xaxt="n")
-    # axis(1, at = t_at,labels = t_ex)
     m <- su1[su1$Crs.No==course,]
     mCE <- m$Enrlmnt.Percentage*40
     x <- seq(0, 45, by = 1)
@@ -227,6 +215,7 @@ for (i in 2014:2019) {
     return(bf)
   }
   
+  # make a priority queue for time sections of a course
   priority <- function(course) {
     bf <- graph(course)
     bf <- bf[order(-bf$`> 0.8 LB`,
@@ -246,6 +235,7 @@ for (i in 2014:2019) {
     return(bf)
   }
   
+  # output the prediction of time sections for a course
   solution <- function(course) {
     
     crsN <- read.csv(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/output/Stage_I_output",
@@ -277,10 +267,11 @@ for (i in 2014:2019) {
     return(sol)
   }
   
+  # output the compariso of real and prediction of time sections for a course
+  # if predicted year does not have past data, omit this part
   validate <- function() {
     if (predict_yr < 2019) {
       sink(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/output/Stage_II_real_validate",yr_at[yrN]+1,".txt",sep="_"))
-      #su1 <- read.csv("/Users/linni/Documents/MATH 381/MathSummerScheduling/data/su1.csv", header = TRUE)
       for (i in course) {
         crs <- su[su$Crs.No==i,]
         crs <- crs[crs$Yr==predict_yr,]
@@ -320,6 +311,7 @@ for (i in 2014:2019) {
     }
   }
   
+  # produce outputs for all courses
   produce <- function() {
     sink(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/output/Stage_II_predict", yr_at[yrN]+1, ".txt",sep="_"))
     course = c(111, 120, 124, 125, 126, 307, 308, 309, 324)
@@ -333,5 +325,4 @@ for (i in 2014:2019) {
   }
   
   produce()
-
 }
