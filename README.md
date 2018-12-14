@@ -217,6 +217,8 @@ Real of MATH 308 in 2018:
 3     940      1
 4    1050      1
 5    1200      1
+```
+```
 [1] "Comparison of MATH 308"
 [1] "110 : has no past data"
 [1] "220 : recommend to increase 1 section(s)"
