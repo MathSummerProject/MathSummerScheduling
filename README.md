@@ -191,6 +191,8 @@ Real of MATH 324 in 2018:
 3     940      1
 4    1050      0
 5    1200      1
+```
+```
 [1] "Comparison of MATH 324"
 [1] "110 : has the same number"
 [1] "220 : has no past data"
