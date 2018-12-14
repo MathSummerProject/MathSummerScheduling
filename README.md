@@ -160,6 +160,9 @@ Notes:
 ```
 
 ### Final Result - stage II (example)
+```
+Prediction of MATH 324 in 2019
+```
   ```
   Section Number
 1     110      1
@@ -168,4 +171,63 @@ Notes:
 4    1050      0
 5    1200      1
   ```
+  
+### Result Validation - stage II (examples)
+```
+Prediction of MATH 324 in 2018
+```
+  ```
+  Section Number
+1     110      1
+2     220      0
+3     940      1
+4    1050      0
+5    1200      1
+  ```
+```
+Real of MATH 324 in 2018
+```
+  ```
+    Section Number
+1     110      1
+2     220      0
+3     940      1
+4    1050      0
+5    1200      1
+[1] "Comparison of MATH 324"
+[1] "110 : has the same number"
+[1] "220 : has no past data"
+[1] "940 : has the same number"
+[1] "1050 : has no past data"
+[1] "1200 : has the same number"
+  ```
+```
+Prediction of MATH 308 in 2018
+```
+  ```
+  Section Number
+1     110      0
+2     220      2
+3     940      1
+4    1050      1
+5    1200      2
+  ```
+```
+Real of MATH 308 in 2018
+```
+  ```
+  Section Number
+1     110      0
+2     220      1
+3     940      1
+4    1050      1
+5    1200      1
+[1] "Comparison of MATH 308"
+[1] "110 : has no past data"
+[1] "220 : recommend to increase 1 section(s)"
+[1] "940 : has the same number"
+[1] "1050 : has the same number"
+[1] "1200 : recommend to increase 1 section(s)"
+  ```
+ 
 Details can be referred from the paper.
