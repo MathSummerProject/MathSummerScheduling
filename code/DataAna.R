@@ -3,16 +3,19 @@ library(dplyr)
 library(survival)
 
 #11 represents past data of 2008-2018, predicts 2019
-predict_yr = 2014
+for (i in 2014:2018) {
+  predict_yr = i
+
 yrN = predict_yr-2008
 #yrN=11
 #yrN=10
 #yrN=9
 #yrN=8
 #setwd("/Users/linni/Documents/MATH 381/MathSummerScheduling/Graph/2019")
-setwd(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/Graph/",yr_at[yrN]+1,sep=""))
+
 t_at <- c(110, 220, 940, 1050, 1200)
 yr_at <- 2007+1:yrN
+setwd(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/Graph/",yr_at[yrN]+1,sep=""))
 course = c(111, 120, 124, 125, 126, 307, 308, 309, 324)
 weight <- c(seq(0.1,0.6,0.1), seq(0.8, 1.6, 0.2))[1:yrN]
 weight <- weight / sum(weight)
@@ -22,7 +25,11 @@ t_ex <- expression(paste(1,":",10,"pm"), paste(2,":",20,"pm"),
 defa <- rep(0, length(t_at))
 
 su <- read.csv("/Users/linni/Documents/MATH 381/MathSummerScheduling/data/su1.csv", header = TRUE)
-su1 <- data.frame(su)[su1$Yr<=yr_at[yrN],]
+su1 <- data.frame(su)[su$Yr<=yr_at[yrN],]
+crsN <- read.csv(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/output/Stage_I_output",
+                       predict_yr,".csv", 
+                       sep="_"),header = TRUE)
+crsN <- data.frame(crsN)
 initial(yrN)
 initial <- function(yrN) {
   t_at <- c(110, 220, 940, 1050, 1200)
@@ -277,23 +284,41 @@ solution <- function(course) {
 
 validate <- function() {
   if (predict_yr < 2019) {
-    sink(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/output/Stage_II_real",yr_at[yrN]+1,".txt",sep="_"))
+    sink(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/output/Stage_II_real_validate",yr_at[yrN]+1,".txt",sep="_"))
     #su1 <- read.csv("/Users/linni/Documents/MATH 381/MathSummerScheduling/data/su1.csv", header = TRUE)
     for (i in course) {
       crs <- su[su$Crs.No==i,]
       crs <- crs[crs$Yr==predict_yr,]
       num <- crsN[crsN$Course==course,]$Number
-      sol <- data.frame("Section" = t_at, "Number" = defa)
+      real <- data.frame("Section" = t_at, "Number" = defa)
       print(i)  
       count = numeric(5)
       defa <- rep(0, length(t_at))
       for (j in 1:5) {
         a<-crs[crs$Start.Time==t_at[j]] 
         if (length(a) != 0) {
-          sol[sol$"Section"==t_at[j],]$"Number"=sol[sol$"Section"==t_at[j],]$"Number"+1
+          real[real$"Section"==t_at[j],]$"Number"=real[real$"Section"==t_at[j],]$"Number"+1
         }
       }
-      print(sol)
+      predict <- solution(i)
+      print(real)
+      print(paste("Comparison of MATH", i))
+      for (j in 1:5){
+        a<-crs[crs$Start.Time==t_at[j]] 
+        if (length(a) != 0) {
+          diff <- real[real$"Section"==t_at[j],]$"Number" - predict[predict$"Section"==t_at[j],]$"Number"
+          if (diff == 0) {
+            print(paste(t_at[j],": has the same number"))
+          } else if (diff > 0) {
+            print(paste(t_at[j],": recommend to reduce", diff, "section(s)"))
+          } else { # diff < 0
+            print(paste(t_at[j],": recommend to increase", abs(diff), "section(s)"))
+          }
+        } else {
+          print(paste(t_at[j],": has no past data"))
+        }
+      }
+        
       cat("\n")
     }
     sink()
@@ -301,7 +326,7 @@ validate <- function() {
 }
 
 produce <- function() {
-  sink(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/output/Stage_II_output", yr_at[yrN]+1, ".txt"))
+  sink(paste("/Users/linni/Documents/MATH 381/MathSummerScheduling/output/Stage_II_predict", yr_at[yrN]+1, ".txt",sep="_"))
   course = c(111, 120, 124, 125, 126, 307, 308, 309, 324)
   for (i in course) {
     print(i)
@@ -314,3 +339,4 @@ produce <- function() {
 
 produce()
 
+}
