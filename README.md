@@ -173,10 +173,8 @@ Prediction of MATH 324 in 2019
   ```
   
 ### Result Validation - stage II (examples)
-```
-Prediction of MATH 324 in 2018
-```
   ```
+Prediction of MATH 324 in 2018:
   Section Number
 1     110      1
 2     220      0
@@ -184,10 +182,9 @@ Prediction of MATH 324 in 2018
 4    1050      0
 5    1200      1
   ```
-```
-Real of MATH 324 in 2018
-```
+
   ```
+Real of MATH 324 in 2018:
     Section Number
 1     110      1
 2     220      0
@@ -201,10 +198,9 @@ Real of MATH 324 in 2018
 [1] "1050 : has no past data"
 [1] "1200 : has the same number"
   ```
-```
-Prediction of MATH 308 in 2018
-```
+
   ```
+Prediction of MATH 308 in 2018:
   Section Number
 1     110      0
 2     220      2
@@ -212,10 +208,9 @@ Prediction of MATH 308 in 2018
 4    1050      1
 5    1200      2
   ```
-```
-Real of MATH 308 in 2018
-```
+
   ```
+Real of MATH 308 in 2018:
   Section Number
 1     110      0
 2     220      1
